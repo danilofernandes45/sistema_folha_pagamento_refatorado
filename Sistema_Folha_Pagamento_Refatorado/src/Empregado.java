@@ -15,6 +15,14 @@ public class Empregado
 	
 	private PaymentSchedule paymentSchedule;
 	
+	public PaymentSchedule getPaymentSchedule() {
+		return paymentSchedule;
+	}
+
+	public void setPaymentSchedule(String pay) {
+		this.paymentSchedule.setPaymentSchedule(pay);
+	}
+
 	private boolean sindicalizado;
 	private int codigoSindicato;
 	private float taxaSind;
@@ -27,10 +35,12 @@ public class Empregado
 	
 	public Empregado() {
 		this.setTaxaServicos(0);
+		this.ultimoPagamento = new Date();
 		this.deleted = false;
 		this.sindicalizado = false;
 		this.cartao = new ArrayList<>();
 		this.sales = new ArrayList<>();
+		this.paymentSchedule = new PaymentSchedule();
 	}
 	
 	public ArrayList<Point> getCartao() {

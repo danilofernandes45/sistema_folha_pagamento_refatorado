@@ -1,7 +1,4 @@
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 
@@ -45,12 +42,12 @@ public class UI {
 				System.out.println("4 (undo)");
 			else if(redoing)
 				System.out.println("4 (redo)");
-			realizar = Integer.valueOf( input.nextInt() );
+			realizar = Integer.valueOf( input.nextLine() );
 
 			if(realizar == 1)
 			{
 				System.out.println("Digite 1(incluir) ou 2(editar) ou 3(remover)");
-				escolha = Integer.valueOf( input.nextInt() );
+				escolha = Integer.valueOf( input.nextLine() );
 
 				if(escolha == 1){
 					addEmployee();
@@ -183,15 +180,13 @@ public class UI {
 		emp = editFinicialInfo(emp);
 		emp = editSindicateInfo(emp);
 
-		database.addEmployee(emp);
-		System.out.println("Feito!");
+		System.out.println("Empregado cadastrado! ID do novo empregado:"+ database.addEmployee(emp));
 
 	}
 
 	private Empregado editPersonalInfo(Empregado emp) {
 
 		System.out.println("Digite o nome do empregado:");
-		input.nextLine();
 		emp.setNome( input.nextLine() );
 
 		System.out.println("Digite o endereco:");
@@ -211,18 +206,20 @@ public class UI {
 			emp.setTipo(TypeEmp.HOURLY);
 			System.out.println("Valor da hora trabalhada:");
 			emp.setSalarioHora( Float.valueOf( input.nextLine() ) );
-
+			emp.setPaymentSchedule("semanal 1 sexta");
 
 		} else {
 
 			System.out.println("Digite o salario fixo: ");
-			emp.setSalarioFixo( Float.valueOf( input.nextFloat() ) );
+			emp.setSalarioFixo( Float.valueOf( input.nextLine() ) );
 
-			if( tipo == 2 )
+			if( tipo == 2 ) {
 				emp.setTipo(TypeEmp.SALARIED);
-
-			else
+				emp.setPaymentSchedule("semanal 2 sexta");
+			}else{
 				emp.setTipo(TypeEmp.COMISSIONED);
+				emp.setPaymentSchedule("mensal $");
+			}
 
 		}
 

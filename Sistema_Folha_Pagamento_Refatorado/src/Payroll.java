@@ -75,7 +75,7 @@ public class Payroll {
 			
 		}
 		
-		System.out.printf("TOTAL : R$ %.2f", total);
+		System.out.printf("TOTAL : R$ %.2f\n", total);
 		database.setEmployees(employees);
 		
 	}

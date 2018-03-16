@@ -52,12 +52,14 @@ public class Database {
 		this.schedules = schedules;
 	}
 
-	public void addEmployee(Empregado emp) {
+	public int addEmployee(Empregado emp) {
 		
 		update();
 		
-		emp.setId( actual.size() );
+		int id = actual.size();
+		emp.setId( id );
 		actual.add(emp);
+		return id;
 	}
 	
 	public void editEmployee(Empregado emp) {
